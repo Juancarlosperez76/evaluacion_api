@@ -18,8 +18,10 @@ const getEncuesta = async (req, res) => {
     edad = edad / promedioEdades;
 
     res.json({
+
         msg: 'Encuesta GET API',
         encuestas,
+        
         msg: `El promedio de las edades de los desempleados es: ${edad}`
     })
 }
