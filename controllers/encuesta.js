@@ -1,8 +1,11 @@
 const encuesta = require('../models/encuesta')
 
+//Método GET: Llamar y mostrar datos
 const getEncuesta = async (req, res) => {
-    const encuestas = await encuesta.find({ "empleado": false })
+    // const encuestas = await encuesta.find() //Consultar todos los registros
+    const encuestas = await encuesta.find({ "empleado": false }) //Consultar desmpleados por valor (booleano: false)
 
+    //Función para promediar edades de desempleados
     let edad = 0;
     let promedioEdades = 0;
 
@@ -21,6 +24,7 @@ const getEncuesta = async (req, res) => {
     })
 }
 
+//Método POST: Enviar datos 
 const postEncuesta = async (req, res) => {
     //Desesctructuración de parámetros
     const { nombreEncuesta, fecha, documentoEncuestado, nombreEncuestado, edad, genero, empleado } = req.body
@@ -35,7 +39,7 @@ const postEncuesta = async (req, res) => {
     })
 }
 
-//Put: modificación
+//Método PUT: Modificación total
 const putEncuesta = async (req, res) => {
     const { nombreEncuesta, fecha, documentoEncuestado, nombreEncuestado, edad, genero, empleado } = req.body
     //
@@ -47,7 +51,7 @@ const putEncuesta = async (req, res) => {
     })
 }
 
-//Patch: modificación parcial
+//Método PATCH: modificación parcial
 const patchEncuesta = async (req, res) => {
     const { documentoEncuestado, nombreEncuestado } = req.body
 
@@ -59,7 +63,7 @@ const patchEncuesta = async (req, res) => {
     })
 }
 
-//Eliminar 
+//Método DELETE: Eliminar un registro
 const deleteEncuesta = async (req, res) => {
     const { documentoEncuestado } = req.query
 
